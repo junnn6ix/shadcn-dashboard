@@ -4,6 +4,7 @@ import {
   Calendar,
   ChevronDown,
   ChevronUp,
+  CreditCard,
   Home,
   Inbox,
   Info,
@@ -58,8 +59,7 @@ import {
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
+
 import {
   Sheet,
   SheetClose,
@@ -78,7 +78,7 @@ const AppSidebar = () => {
   const items = [
     {
       title: "Home",
-      url: "#",
+      url: "/",
       icon: Home,
     },
     {
@@ -192,7 +192,7 @@ const AppSidebar = () => {
                     <form>
                       <DialogTrigger asChild>
                         <SidebarMenuButton asChild suppressHydrationWarning>
-                          <Link href="/">
+                          <Link href="#">
                             <Plus />
                             Add Project
                           </Link>
@@ -227,6 +227,50 @@ const AppSidebar = () => {
           </SidebarContent>
         </SidebarGroup>
 
+        {/* Payments */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Payments</SidebarGroupLabel>
+          <SidebarGroupAction title="Add Project">
+            <Plus /> <span className="sr-only">Add Users</span>
+          </SidebarGroupAction>
+          <SidebarContent>
+            <SidebarMenu>
+              <SidebarMenuButton asChild suppressHydrationWarning>
+                <Link href="/payments">
+                  <CreditCard />
+                  See All Payments
+                </Link>
+              </SidebarMenuButton>
+
+              <SidebarMenuItem>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <SidebarMenuButton asChild suppressHydrationWarning>
+                      <div>
+                        <Plus />
+                        Add Payments
+                      </div>
+                    </SidebarMenuButton>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Add Payment</SheetTitle>
+                      <SheetDescription>Add New Payment</SheetDescription>
+                    </SheetHeader>
+                    {/* Do Something here */}
+                    <SheetFooter>
+                      <Button type="submit">Add Payment</Button>
+                      <SheetClose asChild>
+                        <Button variant="outline">Close</Button>
+                      </SheetClose>
+                    </SheetFooter>
+                  </SheetContent>
+                </Sheet>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarContent>
+        </SidebarGroup>
+
         {/* Users */}
         <SidebarGroup>
           <SidebarGroupLabel>Users</SidebarGroupLabel>
@@ -246,7 +290,7 @@ const AppSidebar = () => {
                 <Sheet>
                   <SheetTrigger asChild>
                     <SidebarMenuButton asChild suppressHydrationWarning>
-                      <Link href="/">
+                      <Link href="#">
                         <Plus />
                         Add User
                       </Link>
@@ -285,7 +329,7 @@ const AppSidebar = () => {
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild suppressHydrationWarning>
-                      <Link href="/">
+                      <Link href="#">
                         <MessageCircleQuestionMark />
                         FAQ
                       </Link>
